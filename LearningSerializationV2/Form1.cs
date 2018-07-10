@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LearningSerializationV2
 {
@@ -16,5 +17,33 @@ namespace LearningSerializationV2
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText("eureka.txt", "Eureka!");
+            byte[] eurekaBytes = File.ReadAllBytes("eureka.txt");
+            foreach (byte b in eurekaBytes)
+                Console.Write("{0} ", b); //converting text eureka to bytes
+            Console.WriteLine();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText("eureka.txt", "Eureka!");
+            byte[] eurekaBytes = File.ReadAllBytes("eureka.txt");
+            foreach (byte b in eurekaBytes)
+                Console.Write("{0:x2} ", b);
+            Console.WriteLine();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText("eureka.txt", "שלום", Encoding.Unicode);
+            byte[] eurekaBytes = File.ReadAllBytes("eureka.txt");
+            foreach (byte b in eurekaBytes)
+                Console.Write("{0:x2} ", b);
+            Console.WriteLine();
+        }
     }
+    
 }
